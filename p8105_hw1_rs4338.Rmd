@@ -17,12 +17,43 @@ Problem 0.1:
 library(tidyverse)
 ```
 
-The purpose of this file is to present a couple of basic plots using `ggplot`.
+Problem 1:
 
-First we create a dataframe containing variables for our plots.
+* Load the Palmer Penguins dataset
+* Describe the `penguins` dataset
+  + Names/Variables: 
+      - Species (Adelie, Chinstrap, Gentoo)
+      - Island (Biscoe, Dream, Torgersen)
+      - Bill Length (in mm)
+      - Bill Depth (in mm)
+      - Flipper Length (in mm)
+      - Body Mass (in g)
+      - Sex (Female, Male)
+      - Year (2007, 2008, 2009) 
+  + Size of the dataset: 344 rows, 8 columns/variables
+  + Mean Flipper Length: 200.9152 mm
 
-```{r df_create}
-set.seed(1234)
+
+```{r PalmerPenguins_exploratory}
+
+data("penguins", package = "palmerpenguins")
+
+# code to get all column names
+columns_names = colnames(penguins)
+
+# code to find the notable values of categorial variables
+species_types = unique(penguins$species)
+island_types = unique(penguins$island)
+sex_types = unique(penguins$sex)
+years_included = unique(penguins$year)
+
+# code to find the number of rows and columns
+col_num = ncol(penguins)
+row_num = nrow(penguins)
+
+# code to find the mean flipper length
+mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
+
 
 plot_df = tibble(
   x = rnorm(1000, sd = .5),
