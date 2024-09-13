@@ -53,22 +53,20 @@ row_num = nrow(penguins)
 
 # code to find the mean flipper length
 mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
-
-
-plot_df = tibble(
-  x = rnorm(1000, sd = .5),
-  y = 1 + 2 * x + rnorm(1000)
-)
 ```
 
-First we show a histogram of the `x` variable.
+Then, we show a scatterplot of the `flipper_length_mm` (y) vs `bill_length_mm` (x) variable.
 
-```{r x_hist}
-ggplot(plot_df, aes(x = x)) + geom_histogram()
+```{r penguins_scatterplot}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + geom_point(aes(color = species), na.rm=TRUE) +
+  ggtitle("Penguin Bill Length vs. Flipper Length") +
+  xlab("Bill Length (mm)") +
+  ylab("Flipper Width (mm)") +
+  labs(col="Species")
+
+# export the scatterplot 
+ggsave("penguins_scatterplot.png")
+
 ```
 
-Next we show a scatterplot of `y` vs `x`. 
 
-```{r yx_scatter}
-ggplot(plot_df, aes(x = x, y = y)) + geom_point()
-```
