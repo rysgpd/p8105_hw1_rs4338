@@ -7,7 +7,7 @@ output: github_document
 
 [Homework Assignment Details](https://p8105.com/homework_1.html)
 
-Problem 0.1:
+# Problem 0.1:
 
 * Create a public GitHub repo + local R Project (p8105_hw1_rs4338)
 * Create a single .Rmd file named p8105_hw1_rs4338.rmd that renders to github_document
@@ -17,10 +17,9 @@ Problem 0.1:
 library(tidyverse)
 ```
 
-Problem 1:
+# Problem 1:
 
-* Load the Palmer Penguins dataset
-* Describe the `penguins` dataset
+### We load and describe the Palmer `penguins` dataset
   + Names/Variables: 
       - Species (Adelie, Chinstrap, Gentoo)
       - Island (Biscoe, Dream, Torgersen)
@@ -54,7 +53,7 @@ mean_flipper_length =
 
 ```
 
-Then, we show a scatterplot of the `flipper_length_mm` (y) vs `bill_length_mm` (x) variable.
+### Then, we show a scatterplot of the `flipper_length_mm` (y) vs `bill_length_mm` (x) variable.
 
 ```{r penguins_scatterplot,message=FALSE}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + geom_point(aes(color = species), na.rm=TRUE) +
@@ -69,8 +68,8 @@ ggsave("penguins_scatterplot.png")
 ```
 
 
-Problem 2:
-Create a data frame comprised of:
+# Problem 2:
+#### Create a data frame comprised of:
 
 * a random sample of size 10 from a standard Normal distribution
 * a logical vector indicating whether elements of the sample are greater than 0
@@ -87,7 +86,7 @@ problem2_df = tibble(
 )
 ```
 
-Attempting to take the mean of each variable in my dataframe:
+### Attempting to take the mean of each variable in my dataframe:
 
 It is possible to take the mean of vectors that consist of numeric or logical values (ex: the random sample of 10 from a standard Normal distribution and the logical vector that showed whether the random sample of 10 elements were greater than 0). The logical values can be seen as 0 and 1 for false and true respectively. However, character vectors and factor vectors cannot be used to calculate a "mean". 
 
@@ -99,7 +98,7 @@ mean(pull(problem2_df, vec_char))
 mean(pull(problem2_df, vec_factor))
 ```
 
-Let's try converting the logical, character, factor vectors to numeric and see if we can take the mean then:
+### Let's try converting the logical, character, factor vectors to numeric and see if we can take the mean then:
 
 The logic and factor vectors were able to be converted to numeric vectors. For the logic vector, it converted false to 0 and true to 1. For the factor vector, it took the three factors and assigned them values of 1-3, by alphabetical order (divorced: 1, married: 2, single: 3). You can also specify what each of the factors should equate to if you don't want it in alphabetical order. However, it was unable to convert the character vector to numeric, so the mean still could not be calculated then. 
 
